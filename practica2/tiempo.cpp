@@ -4,8 +4,13 @@ using namespace std;
 
 int main() {
     cout << "Duracion en segundos: ";
-    unsigned tiempo;
+    int tiempo;
     cin >> tiempo;
+    if (tiempo < 0){
+        cout << "Has introducido una cantidad negativa"<< endl << "Saliendo del programa...";
+        return 1;
+
+    }
     unsigned segundos = tiempo % 60;
     tiempo /=60;
     unsigned minutos = tiempo % 60;

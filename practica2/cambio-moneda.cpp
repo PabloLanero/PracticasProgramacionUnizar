@@ -9,6 +9,11 @@ int main() {
     // 0.0030000000000000001 ???
     double dinero;
     cin >> dinero;
+    if (dinero < 0){
+        cout << "Has introducido una cantidad negativa"<< endl << "Saliendo del programa...";
+        return 1;
+
+    }
     // Conseguimos los euros con un simple casteo
     int euros = (int)dinero;
     // Ahora vamos a poner centimos como un entero

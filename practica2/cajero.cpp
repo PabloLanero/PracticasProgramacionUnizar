@@ -4,8 +4,12 @@ using namespace std;
 
 int main() {
     cout << "Cantidad de retirar en euros [positiva y multiplo de 10]: ";
-    unsigned euros;
+    int euros;
     cin >> euros;
+    if(euros<0 || (euros%10) !=0){
+        cout << "Has introducido una cantidad incorrecta"<< endl << "Saliendo del programa...";
+        return 1;
+    } 
     unsigned billetes50 = euros/50;
     unsigned billetes20 = (euros-(billetes50*50))/20;
     unsigned billetes10 = (euros-(billetes50*50+billetes20*20))/10;

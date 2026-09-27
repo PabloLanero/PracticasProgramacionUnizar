@@ -29,6 +29,9 @@ int main(){
         case 7:
             diaSemana = "Domingo";
             break;
+        default:
+            cout << "Has introducido un dia invalido"<< endl << "Saliendo del programa...";
+            return 1;
     }
     cout << "El dia numero " << dia << " de la semana es " << diaSemana << endl;
 }

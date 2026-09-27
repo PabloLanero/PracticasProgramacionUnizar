@@ -2,6 +2,10 @@
 
 using namespace std;
 
+bool comprobarPunto(char punto){
+    return punto == '.';
+}
+
 int main() {
     cout << "Escriba el identificador de la estancia: ";
     int planta, aula;
@@ -9,9 +13,21 @@ int main() {
     string tipoDeLetra, plantaTexto; 
     cin >> letra;
     cin >> punto;
+    if(!comprobarPunto(punto)){
+        cout << "El tipo de estancia y la planta se tienen que separar con un punto"<< endl;
+        return 1;
+    }
     cin >> planta;
     cin >> punto;
+    if(!comprobarPunto(punto)){
+        cout << "La planta y el número de estancia se tienen que separar con un punto."<< endl;
+        return 1;
+    }
     cin >> aula;
+    if(aula <1){
+        cout << "El número del espacio tiene que ser mayor o igual que 1." << endl;
+        return 1;
+    }
     // Cogemos el texto en funcion de la letra
     switch (letra) {
         case 'A':
@@ -26,6 +42,9 @@ int main() {
         case 'L':
             tipoDeLetra = "Laboratorio";
             break;
+        default:
+            cout << "El tipo de estancia es incorrecto" << endl;
+            return 1;
     }
     // Cogemos el texto en funcion de la planta
     switch (planta){
@@ -44,7 +63,12 @@ int main() {
         case 4:
             plantaTexto = "cuarta planta";
             break;
+        default:
+            cout << "La planta tiene que estar comprendida entre 0 y 4.";
+            return 1;
+            
     }
+
     cout << tipoDeLetra << " numero " << aula << " de la " << plantaTexto << endl;
     // cout << letra << endl << planta << endl << aula;
 
@@ -61,3 +85,4 @@ int main() {
     // unsigned aula = ((int)  texto.(4)) + (int)texto.at(5);
     // cout << edificio << endl << planta << endl << aula;
 }
+
