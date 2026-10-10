@@ -2,6 +2,12 @@
 
 using namespace std;
 
+/**
+ * Programa que pregunta al usuario por un número entero en el intervalo [1, 7] y le informa escribiendo
+ * en la pantalla del dia de la semana correspondiente
+ *
+ * Autor: Pablo Lanero Perez
+ */
 int main(){
     cout << "Escriba un entero entre 1 y 7: ";
     unsigned dia;

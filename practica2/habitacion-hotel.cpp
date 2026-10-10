@@ -1,7 +1,12 @@
 #include <iostream>
 
 using namespace std;
-
+/**
+ * Programa en el que el usuario escribe un numero de al menos 3 cifras y le indica
+ * el numero de la habitacion y la planta relacionada
+ *
+ * Autor: Pablo Lanero Perez
+ */
 int main(){
     cout << "Escriba un numero de habitacion: ";
     int numero;

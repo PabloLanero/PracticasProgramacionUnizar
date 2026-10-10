@@ -1,7 +1,14 @@
 #include <iostream>
 
 using namespace std;
-
+/**
+ * Programa interactivo que pide al usuario que exprese el tiempo de duración de un
+ * determinado evento como una cantidad natural expresada en segundos, para informar a
+ * continuación por la pantalla de la equivalencia del tiempo introducido en semanas, días,
+ * horas, minutos y segundos
+ *
+ * Autor: Pablo Lanero Perez
+ */
 int main() {
     cout << "Duracion en segundos: ";
     int tiempo;

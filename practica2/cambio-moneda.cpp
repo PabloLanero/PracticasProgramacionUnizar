@@ -1,12 +1,17 @@
 #include <iostream>
 
 using namespace std;
-
+/**
+ * Programa interactivo que pide al usuario que escriba una cantidad no negativa de
+ * dinero expresada en euros y procede a informarle de su desglose en euros y céntimos y
+ * también de su equivalente en yenes
+ *
+ * Autor: Pablo Lanero Perez
+ */
 int main() {
     cout << "Escribe una cantidad de dinero no negativa de dinero en euros: ";
-    // Recuerda preguntar porque salen muchos 9s al depurarlo
+    // Equivalencia de un euro en yenes
     double conversion = 178.737;
-    // 0.0030000000000000001 ???
     double dinero;
     cin >> dinero;
     if (dinero < 0){

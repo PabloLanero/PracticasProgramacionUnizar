@@ -5,7 +5,13 @@ using namespace std;
 bool comprobarPunto(char punto){
     return punto == '.';
 }
-
+/**
+ * Programa que solicita al usuario el identificador de un espacio (una letra, un punto, la
+ * planta, un punto y el número de estancia, por ejemplo "A.1.3") y escribe en la pantalla el
+ * tipo de estancia de que se trata, el número de estancia y la planta en la que se encuentra
+ *
+ * Autor: Pablo Lanero Perez
+ */
 int main() {
     cout << "Escriba el identificador de la estancia: ";
     int planta, aula;

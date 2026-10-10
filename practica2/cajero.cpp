@@ -1,7 +1,12 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
-
+/**
+ * El programa informa al usuario del número de billetes (de 50, 20 y 10 euros) que le
+ * devolverá un cajero al retirar la cantidad de dinero especificada
+ *
+ * Autor: Pablo Lanero Perez
+ */
 int main() {
     cout << "Cantidad de retirar en euros [positiva y multiplo de 10]: ";
     int euros;
