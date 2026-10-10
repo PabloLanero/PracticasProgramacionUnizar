@@ -4,6 +4,14 @@
 using namespace std;
 
 /**
+ * 
+ * NO TERMINADO
+ * 
+ */
+
+
+
+/**
  * Programa que aproxima el valor de pi por el método de Monte Carlo: solicita al usuario el
  * número de puntos, genera puntos aleatorios en el cuadrado unidad y presenta por pantalla el
  * recuento obtenido como valor aproximado de pi
