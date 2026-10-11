@@ -8,7 +8,7 @@
  *****************************************************************************/
 
 #include "fechas.hpp"
-
+#include <string>
 /*
  * Pre:  La terna de parámetros «dia», «mes» y «agno» definen una fecha
  *       válida del calendario gregoriano, la fecha «dia/mes/agno».
@@ -91,7 +91,36 @@ bool esBisiesto(unsigned agno) {
  */
 unsigned diasDelMes(unsigned mes, unsigned agno) {
     // Completar
-    
+    unsigned bRet = 30;
+    switch (mes)
+    {
+    case 1:
+        bRet = 31;
+        break;
+    case 3:
+        bRet = 31;
+        break;
+    case 5:
+        bRet = 31;
+        break;
+    case 7:
+        bRet = 31;
+        break;
+    case 8:
+        bRet = 31;
+        break;
+    case 10:
+        bRet = 31;
+        break;
+    case 12:
+        bRet = 31;
+        break;
+    case 2:
+        bRet = esBisiesto(agno) ? 29 : 28;
+    default:
+        break;
+    }
+    return bRet;
 }
 
 
@@ -103,6 +132,7 @@ unsigned diasDelMes(unsigned mes, unsigned agno) {
  */
 unsigned diasDelAgno(unsigned agno) {
     // Completar
+    return esBisiesto(agno) ? 366 : 365;
 }
 
 
@@ -118,6 +148,12 @@ unsigned diasDelAgno(unsigned agno) {
  */
 unsigned diaEnElAgno(unsigned dia, unsigned mes, unsigned agno) {
     // Completar
+    unsigned dias = 0;
+    for(unsigned i = 1; i < mes; i++){
+        dias += diasDelMes(i,agno);
+    }
+    dias += dia;
+    return dias;
 }
 
 
@@ -139,6 +175,14 @@ unsigned diaEnElAgno(unsigned dia, unsigned mes, unsigned agno) {
  */
 void diaSiguiente(unsigned &dia, unsigned &mes, unsigned &agno) {
     // Completar
+    unsigned topeDias = diasDelMes(mes, agno);
+    if(++dia >topeDias){
+        dia = 1;
+        if(++mes >12){
+            mes = 1;
+            agno++;
+        }
+    }
 }
 
 
@@ -154,4 +198,19 @@ void diaSiguiente(unsigned &dia, unsigned &mes, unsigned &agno) {
  */
 unsigned diaDeLaSemana(unsigned dia, unsigned mes, unsigned agno) {
     // Completar
+    // std::string dias[7] = { "L", "M", "X", "J", "V", "S", "D"};
+    unsigned primerDiaAgno = 0;
+    for(unsigned i = 1900; i < agno; i++){
+        primerDiaAgno += esBisiesto(i) ? 2 : 1;
+        primerDiaAgno %= 7;
+    }
+    for (unsigned i = 1; i <mes; i++){
+        primerDiaAgno += diasDelMes(i, agno) % 7;
+        primerDiaAgno %= 7;
+    }
+    
+    primerDiaAgno = ((primerDiaAgno+ (dia-1))  % 7);
+
+    
+    return primerDiaAgno;
 }

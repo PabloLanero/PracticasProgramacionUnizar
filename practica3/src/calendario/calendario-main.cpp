@@ -11,8 +11,12 @@
  *       compilación y ejecución.
  *****************************************************************************/
 #include <iostream>
+#include <iomanip>
 #include <string>
+#include "fechas.hpp"
 using namespace std;
+
+const unsigned SEPARACION_DIAS = 4;     
 
 /*
  * Pre:  1 ≤ mes ≤ 12
@@ -28,10 +32,41 @@ void escribirNombreMes(unsigned mes) {
     cout << NOMBRES_MES[mes - 1];
 }
 
-
+void escribirCalendario(unsigned mes, unsigned agno){
+    cout << endl << endl << setw(22);
+    escribirNombreMes(mes);
+    cout << setw(6) << agno << endl << setw(SEPARACION_DIAS) << "L" << setw(SEPARACION_DIAS) << "M"
+         << setw(SEPARACION_DIAS) << "X" << setw(SEPARACION_DIAS) << "J" << setw(SEPARACION_DIAS) << "V" 
+         << setw(SEPARACION_DIAS) << "S" << setw(SEPARACION_DIAS) << "D" << endl 
+         << "----------------------------" << endl;
+    unsigned primerDia = diaDeLaSemana(1, mes, agno);
+    cout << setw(SEPARACION_DIAS + (SEPARACION_DIAS * primerDia)) << 1;
+    unsigned diasMes = diasDelMes(mes,agno);
+    for (unsigned i = 2; i <= diasMes; i++){
+        cout << setw(SEPARACION_DIAS) << i;
+        if (diaDeLaSemana(i,mes,agno) == 6) cout << endl;
+    }
+    cout << endl;
+}
+void validarDatos(unsigned &mes, unsigned &agno){
+    cout << "Introduzca el mes [1-12]: ";
+    cin >> mes;
+    while(mes < 1 || mes >12){
+        cout << "El mes debe estar comprendido entre 1 y 12: ";
+        cin >> mes;
+    }
+    cout << "Introduzca un año igual o posterior a 1900: ";
+    cin >> agno;
+    while(agno < 1900){
+        cout << "El año debe ser igual o posterior a 1900: ";
+        cin >> agno;
+    }
+}
 /*
  * ¡ESCRIBE LA ESPECIFICACIÓN!
  */
 int main() {
-    return 0;
+    unsigned mes, agno;
+    validarDatos(mes, agno);
+    escribirCalendario(mes, agno);
 }
