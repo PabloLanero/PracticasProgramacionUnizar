@@ -21,10 +21,7 @@
 void componer(unsigned dia, unsigned mes, unsigned agno,
               unsigned &f) {
     // Completar
-    f =0;
-    f += agno*10000;
-    f += dia;
-    f += mes*100;
+    f = agno*10000 + mes*100 + dia;
 }
 
 
@@ -95,23 +92,11 @@ unsigned diasDelMes(unsigned mes, unsigned agno) {
     switch (mes)
     {
     case 1:
-        bRet = 31;
-        break;
     case 3:
-        bRet = 31;
-        break;
     case 5:
-        bRet = 31;
-        break;
     case 7:
-        bRet = 31;
-        break;
     case 8:
-        bRet = 31;
-        break;
     case 10:
-        bRet = 31;
-        break;
     case 12:
         bRet = 31;
         break;
@@ -175,10 +160,11 @@ unsigned diaEnElAgno(unsigned dia, unsigned mes, unsigned agno) {
  */
 void diaSiguiente(unsigned &dia, unsigned &mes, unsigned &agno) {
     // Completar
-    unsigned topeDias = diasDelMes(mes, agno);
-    if(++dia >topeDias){
+    dia++;
+    if(dia > diasDelMes(mes, agno)){
         dia = 1;
-        if(++mes >12){
+        mes++;
+        if(mes > 12){
             mes = 1;
             agno++;
         }

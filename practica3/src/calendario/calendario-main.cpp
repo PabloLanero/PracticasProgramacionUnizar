@@ -31,7 +31,10 @@ void escribirNombreMes(unsigned mes) {
             "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" };
     cout << NOMBRES_MES[mes - 1];
 }
-
+/**
+ * Pre: 1 ≤ mes ≤ 12, 1900 ≤ agno
+ * Post: Escribe el calendario del mes en el año en el se indica
+ */
 void escribirCalendario(unsigned mes, unsigned agno){
     cout << endl << endl << setw(22);
     escribirNombreMes(mes);
@@ -44,10 +47,18 @@ void escribirCalendario(unsigned mes, unsigned agno){
     unsigned diasMes = diasDelMes(mes,agno);
     for (unsigned i = 2; i <= diasMes; i++){
         cout << setw(SEPARACION_DIAS) << i;
-        if (diaDeLaSemana(i,mes,agno) == 6) cout << endl;
+        if (diaDeLaSemana(i,mes,agno) == 6) {
+            cout << endl;
+        }
     }
     cout << endl;
 }
+/**
+ * Pre: Pide mes y agno
+ * Post: Metodo que pide al usuario que inicialice los valores de mes y año 
+ * de forma correcta siendo mes entre 1 y 12 incluidos y agno siendo mayor que 1900
+ * 
+ */
 void validarDatos(unsigned &mes, unsigned &agno){
     cout << "Introduzca el mes [1-12]: ";
     cin >> mes;
@@ -63,7 +74,7 @@ void validarDatos(unsigned &mes, unsigned &agno){
     }
 }
 /*
- * ¡ESCRIBE LA ESPECIFICACIÓN!
+ * Esta es la funcion que se ejecuta
  */
 int main() {
     unsigned mes, agno;
