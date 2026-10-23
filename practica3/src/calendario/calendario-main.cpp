@@ -47,7 +47,7 @@ void escribirCalendario(unsigned mes, unsigned agno){
     unsigned diasMes = diasDelMes(mes,agno);
     for (unsigned i = 2; i <= diasMes; i++){
         cout << setw(SEPARACION_DIAS) << i;
-        if (diaDeLaSemana(i,mes,agno) == 6) {
+        if (((primerDia + i)% 7) == 0) {
             cout << endl;
         }
     }
