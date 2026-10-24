@@ -8,7 +8,7 @@
  *****************************************************************************/
 
 #include "fechas.hpp"
-#include <string>
+
 /*
  * Pre:  La terna de parámetros «dia», «mes» y «agno» definen una fecha
  *       válida del calendario gregoriano, la fecha «dia/mes/agno».
