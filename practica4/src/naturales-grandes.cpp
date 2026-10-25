@@ -37,7 +37,7 @@ void copiar(const unsigned original[], unsigned copia[]) {
  *       sucesivamente. Las componentes de índices superiores a los
  *       correspondientes a los dígitos más significativos almacenan el
  *       valor 0. Las componentes de índices superiores almacenan el valor 0.
- *       «a» y «b» tienen «NUM_DIGITOS» componentes.
+ *       «a» y «b» tienen «NUM_DIGITOS» componentes2.
  * Post: Devuelve el valor booleano «true» si «a» y «b» representan el mismo
  *       número natural y «false» en caso contrario.
  */
@@ -79,7 +79,7 @@ unsigned numCifras(const unsigned natural[]) {
  *       componente natural[0] representa las unidades de «natural», la
  *       componente natural[1] las decenas de «natural» y así, sucesivamente.
  *       Las componentes de índices superiores al correspondiente al dígito más
- *       significativo almacenan el valor 0.
+ *       significativo almaccout << "AAAAAAAAAAAAAAAAAAAAAA" << endl;enan el valor 0.
  *       «natural» tiene «NUM_DIGITOS» componentes.
  * Post: Tras ejecutar este procedimiento, se ha escrito en la pantalla el
  *       número natural representado por «natural» (sin ceros a la izquierda).
@@ -87,7 +87,7 @@ unsigned numCifras(const unsigned natural[]) {
 void escribirEnPantalla(const unsigned natural[]) {
     // Por completar
     unsigned numeroCifras = numCifras(natural);
-    for(unsigned i = numeroCifras; i >=0; i--){
+    for(unsigned i = 0; i <numeroCifras; i++){
         cout << natural[i];
     }
     cout << endl;
@@ -107,14 +107,14 @@ void convertir(const unsigned numero, unsigned naturalGrande[]) {
     // Por completar
     unsigned divisor = 1;
     unsigned contadorCifras = 0;
-    for(unsigned i = 0; (numero /divisor) != 0 && (INT_MAX/divisor) >10; i++){
+    for(unsigned i = 0; (numero /divisor) != 0 && contadorCifras !=10; i++){
         naturalGrande[i] = (numero/divisor) % 10;
         divisor *= 10;
         contadorCifras++;
     }
-    if((INT_MAX/divisor) >10){
+    if(contadorCifras == 10){
         
-        naturalGrande[contadorCifras] = ((numero/divisor));
+        naturalGrande[contadorCifras+1] = ((numero/1000000000));
     }
     for(unsigned i = 0; i < NUM_DIGITOS-contadorCifras; i++){
         naturalGrande[contadorCifras+i] = 0;
@@ -135,6 +135,14 @@ void convertir(const unsigned numero, unsigned naturalGrande[]) {
  */
 unsigned valor(const unsigned naturalGrande[]) {
     // Por completar
+    unsigned valorRetorno = 0;
+    unsigned numeroMaximo = 10; // La cantidad maxima de digitos que puede tener un numero
+    unsigned divisor = 1;
+    for(unsigned i = 0; i<= numeroMaximo; i++){
+        valorRetorno += naturalGrande[i]*divisor;
+        divisor *= 10;
+    }
+    return valorRetorno;
 }
 
 
@@ -156,6 +164,15 @@ unsigned valor(const unsigned naturalGrande[]) {
 void sumar(const unsigned a[], const unsigned b[],
            unsigned suma[], bool &desbordamiento) {
     // Por completar
+    unsigned acarreo = 0;
+    for(unsigned i = 0; i<NUM_DIGITOS; i++){
+        suma[i] = a[i] + b[i]+ acarreo;
+        acarreo = suma[i]/10; 
+        if(acarreo == 1){
+            suma[i] = suma[i]%10;
+        }
+    }
+    desbordamiento = acarreo == 1;
 }
 
 
@@ -168,7 +185,7 @@ void sumar(const unsigned a[], const unsigned b[],
  *       Los vectores «a» y «producto» tienen «NUM_DIGITOS» componentes.
  * Post: Si el producto de los naturales representados por «a» y el valor de
  *       «b» tiene «NUM_DIGITOS» o menos, tras ejecutarse este procedimiento,
- *       «producto» almacena la representación del número natural equivalente
+ *       «producto» almacena la representación del 2número natural equivalente
  *       al producto de los naturales representados por «a» y el valor de «b» y
  *       el valor de «desbordamiento» es «false». En el caso contrario, el
  *       valor de «producto» no está definido y el valor de «desbordamiento»
@@ -177,6 +194,15 @@ void sumar(const unsigned a[], const unsigned b[],
 void multiplicar(const unsigned a[], const unsigned b,
                  unsigned producto[], bool &desbordamiento) {
     // Por completar
+    unsigned acarreo = 0;
+    for(unsigned i = 0; i<NUM_DIGITOS; i++){
+        producto[i] = a[i] * b + acarreo;
+        acarreo = producto[i]/10; 
+        if(acarreo >= 1){
+            producto[i] = producto[i]%10;
+        }
+    }
+    desbordamiento = acarreo >= 1;
 }
 
 
@@ -192,6 +218,13 @@ void multiplicar(const unsigned a[], const unsigned b,
  */
 void calcularImagen(const unsigned natural[], unsigned imagen[]) {
     // Por completar
+    unsigned cantidadCifras = numCifras(natural);
+    for(unsigned i = 0; i < cantidadCifras; i++){
+        imagen[i] = natural[cantidadCifras-1-i];
+    }
+    for(unsigned i = cantidadCifras; i < NUM_DIGITOS; i++){
+        imagen[i] = 0;
+    }
 }
 
 
@@ -206,4 +239,8 @@ void calcularImagen(const unsigned natural[], unsigned imagen[]) {
  */
 bool esCapicua(const unsigned natural[]) {
     // Por completar
+    unsigned imagen[NUM_DIGITOS] = {};
+    calcularImagen(natural, imagen);
+    return sonIguales(natural, imagen);
+
 }
