@@ -17,7 +17,7 @@
 
 #include <climits>
 #include <iostream>
-#include "naturales-grandes.hpp"
+#include "../src/naturales-grandes.hpp"
 using namespace std;
 
 /*

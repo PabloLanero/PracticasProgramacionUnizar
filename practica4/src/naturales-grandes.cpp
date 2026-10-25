@@ -7,7 +7,9 @@
 \*********************************************************************************************/
 
 #include "naturales-grandes.hpp"
-
+#include <climits>
+#include <iostream>
+using namespace std;
 /*
  * Pre:  «original» almacena la representación de un número natural. La
  *       componente original[0] representa las unidades de «original», la
@@ -20,6 +22,11 @@
  */
 void copiar(const unsigned original[], unsigned copia[]) {
     // Por completar
+    // copia = original; // No deja ;-;
+    for(unsigned i = 0; i< NUM_DIGITOS; i++)
+    {
+        copia[i] = original[i];
+    }
 }
 
 
@@ -36,6 +43,12 @@ void copiar(const unsigned original[], unsigned copia[]) {
  */
 bool sonIguales(const unsigned a[], const unsigned b[]) {
     // Por completar
+    bool bRet = true;
+    for(unsigned i = 0; i< NUM_DIGITOS && bRet; i++)
+    {
+        bRet = a[i] == b[i];
+    }
+    return bRet;
 }
 
 
@@ -51,6 +64,13 @@ bool sonIguales(const unsigned a[], const unsigned b[]) {
  */
 unsigned numCifras(const unsigned natural[]) {
     // Por completar
+    unsigned numeroCifras = 1;
+    for (int i = NUM_DIGITOS-1; i >= 0 && numeroCifras == 1; i--){
+        if(natural[i] != 0){
+            numeroCifras = i+1;
+        }   
+    }
+    return numeroCifras;
 }
 
 
@@ -66,6 +86,11 @@ unsigned numCifras(const unsigned natural[]) {
  */
 void escribirEnPantalla(const unsigned natural[]) {
     // Por completar
+    unsigned numeroCifras = numCifras(natural);
+    for(unsigned i = numeroCifras; i >=0; i--){
+        cout << natural[i];
+    }
+    cout << endl;
 }
 
 
@@ -80,6 +105,20 @@ void escribirEnPantalla(const unsigned natural[]) {
  */
 void convertir(const unsigned numero, unsigned naturalGrande[]) {
     // Por completar
+    unsigned divisor = 1;
+    unsigned contadorCifras = 0;
+    for(unsigned i = 0; (numero /divisor) != 0 && (INT_MAX/divisor) >10; i++){
+        naturalGrande[i] = (numero/divisor) % 10;
+        divisor *= 10;
+        contadorCifras++;
+    }
+    if((INT_MAX/divisor) >10){
+        
+        naturalGrande[contadorCifras] = ((numero/divisor));
+    }
+    for(unsigned i = 0; i < NUM_DIGITOS-contadorCifras; i++){
+        naturalGrande[contadorCifras+i] = 0;
+    }
 }
 
 
