@@ -38,7 +38,8 @@ void escribirNombreMes(unsigned mes) {
 void escribirCalendario(unsigned mes, unsigned agno){
     cout << endl << endl << setw(22);
     escribirNombreMes(mes);
-    cout << setw(6) << agno << endl << setw(SEPARACION_DIAS) << "L" << setw(SEPARACION_DIAS) << "M"
+    cout << setw(6) << agno << endl;
+    cout << setw(SEPARACION_DIAS) << "L" << setw(SEPARACION_DIAS) << "M"
          << setw(SEPARACION_DIAS) << "X" << setw(SEPARACION_DIAS) << "J" << setw(SEPARACION_DIAS) << "V" 
          << setw(SEPARACION_DIAS) << "S" << setw(SEPARACION_DIAS) << "D" << endl 
          << "----------------------------" << endl;

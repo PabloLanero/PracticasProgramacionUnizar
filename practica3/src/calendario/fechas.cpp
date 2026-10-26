@@ -195,7 +195,7 @@ unsigned diaDeLaSemana(unsigned dia, unsigned mes, unsigned agno) {
         primerDiaAgno %= 7;
     }
     
-    primerDiaAgno = ((primerDiaAgno+ (dia-1))  % 7);
+    primerDiaAgno = (primerDiaAgno + dia - 1)  % 7;
 
     
     return primerDiaAgno;
