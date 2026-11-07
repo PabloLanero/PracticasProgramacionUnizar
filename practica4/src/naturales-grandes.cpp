@@ -87,10 +87,9 @@ unsigned numCifras(const unsigned natural[]) {
 void escribirEnPantalla(const unsigned natural[]) {
     // Por completar
     unsigned numeroCifras = numCifras(natural);
-    for(unsigned i = 0; i <numeroCifras; i++){
+    for(int i = numeroCifras-1; i >=0; i--){
         cout << natural[i];
     }
-    cout << endl;
 }
 
 
