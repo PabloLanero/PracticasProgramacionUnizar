@@ -8,6 +8,10 @@
 
 using namespace std;
 
+/**
+ * Programa que pedira al usuario dos numero naturales y calculara los valores de fibonacci que 
+ * ocupen ese intervalo entre los numeros naturales
+ */
 int main() {
     unsigned a[NUM_DIGITOS] = {};
     unsigned b[NUM_DIGITOS] = {};

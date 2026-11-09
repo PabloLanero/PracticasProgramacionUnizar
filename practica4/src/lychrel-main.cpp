@@ -1,6 +1,6 @@
 /******************************************************************************
  * Programación 1. Práctica 4
- * Autores: ------------- ¡PON AQUÍ TU NOMBRE! -------------
+ * Autores: ------------- Pablo Lanero Perez -------------
  * Resumen: 
  *****************************************************************************/
 
@@ -9,6 +9,11 @@
 
 using namespace std;
 
+/**
+ * Programa que pide un numero al usuario y comprobara si es un numero de Lychrel
+ * si se produce desbordamiento al haber demasiados digitos, saldra del programa 
+ * y asumira que puede ser un numero de Lychrel
+ */
 int main() {
     cout << "Escriba un numero natural: ";
     unsigned numero;

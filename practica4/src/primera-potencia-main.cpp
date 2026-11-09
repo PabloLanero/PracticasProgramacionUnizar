@@ -8,11 +8,18 @@
 
 using namespace std;
 
- void pedirDato(int &numero){
+/**
+ * Pre: ---
+ * Post: Metodo para pedir el numero al usuario
+ */
+void pedirDato(int &numero){
     cout << "Numero de digitos (0 o negativo para acabar): ";
     cin >> numero;
 
 }
+/**
+ * Programa que pedira al usuario un numero y calculara que numero 2^n tiene esa cantidad de digitos
+ */
 int main() {
     int numero;
     pedirDato(numero);

@@ -7,6 +7,10 @@
 #include "naturales-grandes.hpp"
 
 using namespace std;
+/**
+ * Pre: ---
+ * Post: Pedira al usuario un numero > 0
+ */
 int pedirDato(){
     cout << "Escriba un numero natural: ";
     int numeroNatural;
@@ -17,7 +21,10 @@ int pedirDato(){
     }
     return numeroNatural;
 }
-
+/**
+ * Programa que pedira al usuario un numero y calculara su valor factorial de forma que 
+ * permitira una mayor cantidad de digitos
+ */
 int main() {
     int numeroNatural = pedirDato();
     unsigned numeroVector[NUM_DIGITOS] = {};
