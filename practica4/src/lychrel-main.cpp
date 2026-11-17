@@ -1,7 +1,9 @@
 /******************************************************************************
  * Programación 1. Práctica 4
  * Autores: ------------- Pablo Lanero Perez -------------
- * Resumen: 
+ * Resumen: Programa que solicita un número natural al usuario y comprueba si
+ *          converge a un capicúa al sumarle iterativamente su imagen especular
+ *          o si podría ser un número de Lychrel.
  *****************************************************************************/
 
 #include <iostream>
@@ -9,6 +11,17 @@
 
 using namespace std;
 
+/*
+ * Pre:  «a», «b» y «suma» almacenan las representaciones de sendos números
+ *       naturales de «NUM_DIGITOS» componentes, con las unidades en la
+ *       componente 0, las decenas en la 1 y así sucesivamente, y con valor 0
+ *       en las componentes superiores al dígito más significativo.
+ * Post: Escribe en la pantalla el número de iteración «iteracion». Si
+ *       «muchosDigitos» es «false», muestra la operación «a + b = suma» y
+ *       actualiza «muchosDigitos» a «true» cuando «suma» tiene 20 o más
+ *       cifras; si «muchosDigitos» es «true», escribe "...". Finaliza con un
+ *       salto de línea.
+ */
 void escribirIteracion(unsigned iteracion, unsigned a[],
                      unsigned b[], unsigned suma[], bool &muchosDigitos){
     cout << "Iteracion " << iteracion << ": ";
@@ -24,10 +37,11 @@ void escribirIteracion(unsigned iteracion, unsigned a[],
         }
         cout << '\n';
 }
-/**
- * Programa que pide un numero al usuario y comprobara si es un numero de Lychrel
- * si se produce desbordamiento al haber demasiados digitos, saldra del programa 
- * y asumira que puede ser un numero de Lychrel
+
+/*
+ * Programa que pide un número natural al usuario y comprueba si es un número
+ * de Lychrel sumándole de forma iterativa su imagen especular hasta obtener un
+ * capicúa o producirse desbordamiento, en cuyo caso asume que podría serlo.
  */
 int main() {
     cout << "Escriba un numero natural: ";
@@ -47,7 +61,7 @@ int main() {
         sumar(a,b,suma,desbordamiento);
         copiar(suma, a);
         iteracion++;
-
+        escribirIteracion(iteracion,a,b, suma, demasiadosDigitos);
     }
     if(esCapicua(a)){
         cout << numero << " no es un numero de Lychrel." << '\n';

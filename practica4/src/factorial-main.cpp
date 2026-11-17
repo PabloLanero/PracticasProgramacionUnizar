@@ -1,15 +1,19 @@
-﻿/******************************************************************************
+/******************************************************************************
  * Programación 1. Práctica 4
  * Autores: ------------- Pablo Lanero Perez -------------
- * Resumen: 
+ * Resumen: Programa que solicita al usuario un número natural y calcula y
+ *          muestra su factorial utilizando números naturales grandes.
  *****************************************************************************/
 #include <iostream>
 #include "naturales-grandes.hpp"
 
 using namespace std;
-/**
- * Pre: ---
- * Post: Pedira al usuario un numero > 0
+
+/*
+ * Pre:  ---
+ * Post: Solicita al usuario un número natural (mayor o igual que 0),
+ *       reiterando la petición mientras el valor introducido sea negativo, y
+ *       devuelve el número introducido.
  */
 int pedirDato(){
     cout << "Escriba un numero natural: ";
@@ -22,9 +26,16 @@ int pedirDato(){
     return numeroNatural;
 }
 
-/**
- * Pre: El metodo pedira el numeroGrande que tendra que ser un vector de numeros 
- * 
+/*
+ * Pre:  Si «desbordamiento» es «false», «numeroGrande» almacena la
+ *       representación de un número natural de «NUM_DIGITOS» componentes (con
+ *       las unidades en la componente 0, las decenas en la 1 y así
+ *       sucesivamente, y con valor 0 en las componentes superiores al dígito
+ *       más significativo) correspondiente al factorial de «numeroNatural».
+ * Post: Si «desbordamiento» es «true», escribe en la pantalla un mensaje
+ *       indicando que no se ha podido calcular el factorial. En caso
+ *       contrario, escribe en la pantalla el resultado con el formato
+ *       «numeroNatural! = numeroGrande».
  */
 void imprimirResultado(const unsigned numeroGrande[], const unsigned numeroNatural, const bool desbordamiento){
     if(desbordamiento){
@@ -38,9 +49,10 @@ void imprimirResultado(const unsigned numeroGrande[], const unsigned numeroNatur
 
 void calcularFactorial(const unsigned n, unsigned factorial[], bool &desbordamiento);
 
-/**
- * Programa que pedira al usuario un numero y calculara su valor factorial de forma que 
- * permitira una mayor cantidad de digitos
+/*
+ * Programa que pide al usuario un número natural y calcula su factorial
+ * mediante multiplicaciones sucesivas con números naturales grandes, mostrando
+ * el resultado en pantalla o un aviso en caso de desbordamiento.
  */
 int main() {
     int numeroNatural = pedirDato();

@@ -21,8 +21,6 @@ using namespace std;
  *       idéntica a la del número natural correspondiente a la de «original».
  */
 void copiar(const unsigned original[], unsigned copia[]) {
-    // Por completar
-    // copia = original; // No deja ;-;
     for(unsigned i = 0; i< NUM_DIGITOS; i++)
     {
         copia[i] = original[i];
@@ -42,7 +40,6 @@ void copiar(const unsigned original[], unsigned copia[]) {
  *       número natural y «false» en caso contrario.
  */
 bool sonIguales(const unsigned a[], const unsigned b[]) {
-    // Por completar
     bool iguales = true;
     unsigned contador = 0;
     while (contador < NUM_DIGITOS && iguales)
@@ -66,7 +63,6 @@ bool sonIguales(const unsigned a[], const unsigned b[]) {
  *       sin ceros a la izquierda.
  */
 unsigned numCifras(const unsigned natural[]) {
-    // Por completar
     unsigned numeroCifras = 1;
     int contador = NUM_DIGITOS - 1;
     while(contador >= 0 && numeroCifras == 1){
@@ -84,13 +80,12 @@ unsigned numCifras(const unsigned natural[]) {
  *       componente natural[0] representa las unidades de «natural», la
  *       componente natural[1] las decenas de «natural» y así, sucesivamente.
  *       Las componentes de índices superiores al correspondiente al dígito más
- *       significativo almaccout << "AAAAAAAAAAAAAAAAAAAAAA" << endl;enan el valor 0.
+ *       significativo almacenan el valor 0.
  *       «natural» tiene «NUM_DIGITOS» componentes.
  * Post: Tras ejecutar este procedimiento, se ha escrito en la pantalla el
  *       número natural representado por «natural» (sin ceros a la izquierda).
  */
 void escribirEnPantalla(const unsigned natural[]) {
-    // Por completar
     unsigned numeroCifras = numCifras(natural);
     for(int i = numeroCifras-1; i >=0; i--){
         cout << natural[i];
@@ -108,7 +103,6 @@ void escribirEnPantalla(const unsigned natural[]) {
  *       significativo almacenan el valor 0.
  */
 void convertir(const unsigned numero, unsigned naturalGrande[]) {
-    // Por completar
     unsigned copiaNumero = numero;
     unsigned contadorCifras = 0;
     while(copiaNumero != 0){
@@ -135,7 +129,6 @@ void convertir(const unsigned numero, unsigned naturalGrande[]) {
  * Post: Devuelve el valor numérico del natural almacenado en «naturalGrande».
  */
 unsigned valor(const unsigned naturalGrande[]) {
-    // Por completar
     unsigned valorRetorno = 0;
     unsigned divisor = 1;
     unsigned numeroDigitos = numCifras(naturalGrande);
@@ -164,7 +157,6 @@ unsigned valor(const unsigned naturalGrande[]) {
  */
 void sumar(const unsigned a[], const unsigned b[],
            unsigned suma[], bool &desbordamiento) {
-    // Por completar
     unsigned acarreo = 0;
     for(unsigned i = 0; i<NUM_DIGITOS; i++){
         suma[i] = a[i] + b[i]+ acarreo;
@@ -192,7 +184,6 @@ void sumar(const unsigned a[], const unsigned b[],
  */
 void multiplicar(const unsigned a[], const unsigned b,
                  unsigned producto[], bool &desbordamiento) {
-    // Por completar
     unsigned acarreo = 0;
     for(unsigned i = 0; i<NUM_DIGITOS; i++){
         producto[i] = a[i] * b + acarreo;
@@ -214,7 +205,6 @@ void multiplicar(const unsigned a[], const unsigned b,
  *       del número natural correspondiente a la imagen especular de «natural».
  */
 void calcularImagen(const unsigned natural[], unsigned imagen[]) {
-    // Por completar
     unsigned cantidadCifras = numCifras(natural);
     for(unsigned i = 0; i < cantidadCifras; i++){
         imagen[i] = natural[cantidadCifras-1-i];
@@ -235,7 +225,6 @@ void calcularImagen(const unsigned natural[], unsigned imagen[]) {
  * Post: Devuelve «true» si y solo si «natural» es un número capicúa.
  */
 bool esCapicua(const unsigned natural[]) {
-    // Por completar
     unsigned imagen[NUM_DIGITOS];
     calcularImagen(natural, imagen);
     return sonIguales(natural, imagen);
