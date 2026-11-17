@@ -9,6 +9,21 @@
 
 using namespace std;
 
+void escribirIteracion(unsigned iteracion, unsigned a[],
+                     unsigned b[], unsigned suma[], bool &muchosDigitos){
+    cout << "Iteracion " << iteracion << ": ";
+        if(!muchosDigitos){
+            escribirEnPantalla(a);
+            cout << " + ";
+            escribirEnPantalla(b);
+            cout << " = ";
+            escribirEnPantalla(suma);
+            muchosDigitos = 20 <= numCifras(suma);
+        }else{
+            cout << "...";
+        }
+        cout << '\n';
+}
 /**
  * Programa que pide un numero al usuario y comprobara si es un numero de Lychrel
  * si se produce desbordamiento al haber demasiados digitos, saldra del programa 
@@ -25,23 +40,11 @@ int main() {
     convertir(numero,a);
     cout << "Iteracion " << iteracion << ": ";
     escribirEnPantalla(a);
-    cout << '\n';
+    cout << endl;
     iteracion++;
     while(!desbordamiento && !esCapicua(a)){
         calcularImagen(a, b);
         sumar(a,b,suma,desbordamiento);
-        cout << "Iteracion " << iteracion << ": ";
-        if(!demasiadosDigitos){
-            escribirEnPantalla(a);
-            cout << " + ";
-            escribirEnPantalla(b);
-            cout << " = ";
-            escribirEnPantalla(suma);
-            demasiadosDigitos = 20 <= numCifras(suma);
-        }else{
-            cout << "...";
-        }
-        cout << '\n';
         copiar(suma, a);
         iteracion++;
 

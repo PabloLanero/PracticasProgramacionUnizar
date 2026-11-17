@@ -17,6 +17,14 @@ void pedirDato(int &numero){
     cin >> numero;
 
 }
+
+void imprimirResultado(unsigned vector[], const unsigned contador, const unsigned cantidadCifras){
+    escribirEnPantalla(vector);
+    cout << '\n';
+    cout << "es 2 elevado a la " << contador << ".º potencia" << endl;
+    cout << "y es la primera potencia de 2 de " << cantidadCifras << " digitos" << endl;
+}
+
 /**
  * Programa que pedira al usuario un numero y calculara que numero 2^n tiene esa cantidad de digitos
  */
@@ -36,10 +44,7 @@ int main() {
             cantidadCifras = numCifras(numeroVector);
             contador++;
         }
-        escribirEnPantalla(numeroVector);
-        cout << '\n';
-        cout << "es 2 elevado a la " << contador << ".º potencia" << endl;
-        cout << "y es la primera potencia de 2 de " << cantidadCifras << " digitos" << endl;
+        imprimirResultado(numeroVector, contador, cantidadCifras);
         pedirDato(numero);
     }
     return 0;

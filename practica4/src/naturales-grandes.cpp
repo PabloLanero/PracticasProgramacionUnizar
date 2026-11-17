@@ -1,6 +1,6 @@
 ﻿/*********************************************************************************************\
  * Programación 1. Práctica 4
- * Autores: ------------- ¡PON AQUÍ TU NOMBRE! -------------
+ * Autores: ------------- Pablo Lanero Perez -------------
  * Resumen: Fichero de implementación «naturales-grandes.cpp» de un módulo denominado
  *          «naturales-grandes» para trabajar con números naturales de gran magnitud en la
  *          4ª práctica.
@@ -43,12 +43,15 @@ void copiar(const unsigned original[], unsigned copia[]) {
  */
 bool sonIguales(const unsigned a[], const unsigned b[]) {
     // Por completar
-    bool bRet = true;
-    for(unsigned i = 0; i< NUM_DIGITOS && bRet; i++)
+    bool iguales = true;
+    unsigned contador = 0;
+    while (contador < NUM_DIGITOS && iguales)
     {
-        bRet = a[i] == b[i];
+        iguales = a[contador] == b[contador];
+        contador++;
     }
-    return bRet;
+    
+    return iguales;
 }
 
 
@@ -65,10 +68,12 @@ bool sonIguales(const unsigned a[], const unsigned b[]) {
 unsigned numCifras(const unsigned natural[]) {
     // Por completar
     unsigned numeroCifras = 1;
-    for (int i = NUM_DIGITOS-1; i >= 0 && numeroCifras == 1; i--){
-        if(natural[i] != 0){
-            numeroCifras = i+1;
+    int contador = NUM_DIGITOS - 1;
+    while(contador >= 0 && numeroCifras == 1){
+        if(natural[contador] != 0){
+            numeroCifras = contador+1;
         }   
+        contador--;
     }
     return numeroCifras;
 }
@@ -104,19 +109,16 @@ void escribirEnPantalla(const unsigned natural[]) {
  */
 void convertir(const unsigned numero, unsigned naturalGrande[]) {
     // Por completar
-    unsigned divisor = 1;
+    unsigned copiaNumero = numero;
     unsigned contadorCifras = 0;
-    for(unsigned i = 0; (numero /divisor) != 0 && contadorCifras !=10; i++){
-        naturalGrande[i] = (numero/divisor) % 10;
-        divisor *= 10;
+    while(copiaNumero != 0){
+        naturalGrande[contadorCifras] = copiaNumero%10;
+        copiaNumero /= 10;
         contadorCifras++;
     }
-    if(contadorCifras == 10){
-        
-        naturalGrande[contadorCifras+1] = ((numero/1000000000));
-    }
-    for(unsigned i = 0; i < NUM_DIGITOS-contadorCifras; i++){
-        naturalGrande[contadorCifras+i] = 0;
+    
+    for(unsigned i = contadorCifras; i < NUM_DIGITOS; i++){
+        naturalGrande[i] = 0;
     }
 }
 
@@ -135,9 +137,9 @@ void convertir(const unsigned numero, unsigned naturalGrande[]) {
 unsigned valor(const unsigned naturalGrande[]) {
     // Por completar
     unsigned valorRetorno = 0;
-    unsigned numeroMaximo = 10; // La cantidad maxima de digitos que puede tener un numero
     unsigned divisor = 1;
-    for(unsigned i = 0; i<= numeroMaximo; i++){
+    unsigned numeroDigitos = numCifras(naturalGrande);
+    for(unsigned i = 0; i< numeroDigitos; i++){
         valorRetorno += naturalGrande[i]*divisor;
         divisor *= 10;
     }
@@ -167,9 +169,7 @@ void sumar(const unsigned a[], const unsigned b[],
     for(unsigned i = 0; i<NUM_DIGITOS; i++){
         suma[i] = a[i] + b[i]+ acarreo;
         acarreo = suma[i]/10; 
-        if(acarreo == 1){
-            suma[i] = suma[i]%10;
-        }
+        suma[i] = suma[i]%10;
     }
     desbordamiento = acarreo == 1;
 }
@@ -197,9 +197,7 @@ void multiplicar(const unsigned a[], const unsigned b,
     for(unsigned i = 0; i<NUM_DIGITOS; i++){
         producto[i] = a[i] * b + acarreo;
         acarreo = producto[i]/10; 
-        if(acarreo >= 1){
-            producto[i] = producto[i]%10;
-        }
+        producto[i] = producto[i]%10;
     }
     desbordamiento = acarreo >= 1;
 }
@@ -238,7 +236,7 @@ void calcularImagen(const unsigned natural[], unsigned imagen[]) {
  */
 bool esCapicua(const unsigned natural[]) {
     // Por completar
-    unsigned imagen[NUM_DIGITOS] = {};
+    unsigned imagen[NUM_DIGITOS];
     calcularImagen(natural, imagen);
     return sonIguales(natural, imagen);
 
