@@ -32,7 +32,7 @@ void sumarNaturalesGrandes(unsigned a[], unsigned b[], unsigned suma[], bool &de
  * Post: Inicializa «a» con la representación del número natural 0, «b» con la
  *       del 1, «posicion» con el valor 1 y «desbordamiento» con «false».
  */
-void resetearValores(unsigned a[], unsigned b[], unsigned &posicion, bool &desbordamiento){
+void resetearValores(unsigned a[], unsigned b[], int &posicion, bool &desbordamiento){
     convertir(0,a);
     convertir(1,b);
     posicion = 1;
@@ -48,7 +48,7 @@ void resetearValores(unsigned a[], unsigned b[], unsigned &posicion, bool &desbo
  *       número natural representado por «vector» (sin ceros a la izquierda) y
  *       un salto de línea.
  */
-void escribirIteraccion(const unsigned vector[], const unsigned posicion){
+void escribirIteraccion(const unsigned vector[], const int posicion){
     cout << posicion << ". ";
     escribirEnPantalla(vector);
     cout << endl;
@@ -64,10 +64,10 @@ int main() {
     unsigned a[NUM_DIGITOS] = {};
     unsigned b[NUM_DIGITOS] = {};
     unsigned suma[NUM_DIGITOS] = {};
-    unsigned posicion;
+    int posicion;
     bool desbordamiento;
     resetearValores(a, b, posicion, desbordamiento);
-    unsigned primero, ultimo;
+    int primero, ultimo;
     cout << "Términos inicial y final (0 o negativo para acabar): ";
     cin >> primero;
     while(primero > 0 ){
@@ -81,7 +81,9 @@ int main() {
             posicion++;
         }
         if(desbordamiento){
-            escribirIteraccion(a, posicion);
+            if(posicion >= primero){
+                escribirIteraccion(a, posicion);
+            }
             cout << "Desbordamiento al calcular el termino " << posicion + 1 << '\n';
         }
         cout << "Términos inicial y final (0 o negativo para acabar): ";

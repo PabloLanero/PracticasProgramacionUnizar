@@ -22,8 +22,8 @@ using namespace std;
  *       cifras; si «muchosDigitos» es «true», escribe "...". Finaliza con un
  *       salto de línea.
  */
-void escribirIteracion(unsigned iteracion, unsigned a[],
-                     unsigned b[], unsigned suma[], bool &muchosDigitos){
+void escribirIteracion(const unsigned iteracion, const unsigned a[],
+                     const unsigned b[], const unsigned suma[], bool &muchosDigitos){
     cout << "Iteracion " << iteracion << ": ";
         if(!muchosDigitos){
             escribirEnPantalla(a);
@@ -55,13 +55,12 @@ int main() {
     cout << "Iteracion " << iteracion << ": ";
     escribirEnPantalla(a);
     cout << endl;
-    iteracion++;
     while(!desbordamiento && !esCapicua(a)){
         calcularImagen(a, b);
         sumar(a,b,suma,desbordamiento);
-        copiar(suma, a);
         iteracion++;
         escribirIteracion(iteracion,a,b, suma, demasiadosDigitos);
+        copiar(suma, a);
     }
     if(esCapicua(a)){
         cout << numero << " no es un numero de Lychrel." << '\n';

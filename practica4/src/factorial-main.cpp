@@ -47,8 +47,6 @@ void imprimirResultado(const unsigned numeroGrande[], const unsigned numeroNatur
     }
 }
 
-void calcularFactorial(const unsigned n, unsigned factorial[], bool &desbordamiento);
-
 /*
  * Programa que pide al usuario un número natural y calcula su factorial
  * mediante multiplicaciones sucesivas con números naturales grandes, mostrando

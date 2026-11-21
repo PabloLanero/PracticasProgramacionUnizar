@@ -7,7 +7,6 @@
 \*********************************************************************************************/
 
 #include "naturales-grandes.hpp"
-#include <climits>
 #include <iostream>
 using namespace std;
 /*
